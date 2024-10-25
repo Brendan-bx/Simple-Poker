@@ -42,33 +42,39 @@ export default function PokerGame() {
   }, []);
 
   return (
-    <div>
-      <div className="">
-        <h2>Adversaire</h2>
-        <Hand cards={botHand} />
+    <div className="relative p-4 flex flex-col items-center z-10">
+      <h2 className="text-lg font-bold mb-2 z-10">Adversaire</h2>
+      <Hand cards={botHand} />
+      <div className="flex justify-between w-full mt-4 z-10">
+        <h2 className="text-lg font-bold text-center flex-1">Moi</h2>
       </div>
-      <div className="">
-        <h2>Moi</h2>
-        <div className="flex-row-reverse">
-          <Hand cards={playerHand} />
-        </div>
+      <Hand cards={playerHand} />
+      <div className="mt-4 text-center">
+        {winner === "Égalité" ? (
+          <h2>{winner}!</h2>
+        ) : (
+          <h2>
+            {winner} gagne avec {winningHand}!
+          </h2>
+        )}
       </div>
-      {winner === "Égalité" ? (
-        <h2>{winner}!</h2>
-      ) : (
-        <h2>
-          {winner} gagne avec {winningHand}!
-        </h2>
-      )}
     </div>
   );
 
   function Hand({ cards }) {
     return (
-      <div className="hand">
+      <div className="flex gap-2 mt-2">
         {cards.map((card, index) => (
-          <div key={index} className="card">
-            {card.value} {card.suit}
+          <div
+            key={index}
+            className="w-16 h-24 border-2 border-black rounded-lg flex items-center justify-center bg-white shadow-lg relative z-20"
+            data-value={card.value}
+            data-suit={card.suit}
+          >
+            <span className="absolute top-1 left-1 text-sm">{card.value}</span>
+            <span className="absolute bottom-1 right-1 text-sm">
+              {card.suit}
+            </span>
           </div>
         ))}
       </div>

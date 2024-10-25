@@ -1,8 +1,12 @@
 import "./App.css";
-import PokerGame from "./components/PokerGame.jsx";
+import PokerBackground from "./assets/PokerBackground.js";
 
 function App() {
-  return <PokerGame />;
+  return (
+    <>
+      <PokerBackground />
+    </>
+  );
 }
 
 export default App;
