@@ -1,5 +1,5 @@
 import "./App.css";
-import PokerGame from "./components/PokerGame.js";
+import PokerGame from "./components/PokerGame.jsx";
 
 function App() {
   return <PokerGame />;
