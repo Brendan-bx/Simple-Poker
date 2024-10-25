@@ -1,7 +1,8 @@
 import "./App.css";
+import PokerGame from "./components/PokerGame.js";
 
 function App() {
-  return <div className="App"></div>;
+  return <PokerGame />;
 }
 
 export default App;

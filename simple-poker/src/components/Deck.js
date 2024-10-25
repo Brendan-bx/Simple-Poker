@@ -1,3 +1,4 @@
+// src/components/Deck.js
 const suits = ["♠", "♥", "♦", "♣"];
 const values = ["7", "8", "9", "10", "J", "Q", "K", "A"];
 
@@ -8,8 +9,5 @@ export function createDeck() {
       deck.push({ suit, value });
     }
   }
-  console.log(deck);
   return deck;
 }
-
-createDeck();
