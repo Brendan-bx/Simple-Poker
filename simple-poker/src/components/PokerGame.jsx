@@ -20,31 +20,29 @@ export default function PokerGame() {
   const [playerHand, setPlayerHand] = useState([]);
   const [botHand, setBotHand] = useState([]);
   const [winner, setWinner] = useState(null);
-  const [winningHand, setWinningHand] = useState(null); // État pour la main gagnante
+  const [winningHand, setWinningHand] = useState(null);
 
   const dealCards = () => {
     const shuffledDeck = shuffleDeck(createDeck());
-    const newPlayerHand = shuffledDeck.slice(0, 4); // 4 cartes pour le joueur
-    const newBotHand = shuffledDeck.slice(4, 8); // 4 cartes pour l'adversaire
+    const newPlayerHand = shuffledDeck.slice(0, 4);
+    const newBotHand = shuffledDeck.slice(4, 8);
     setPlayerHand(newPlayerHand);
     setBotHand(newBotHand);
     setDeck(shuffledDeck.slice(8));
 
-    // Évaluer les mains et déterminer le gagnant
-    const playerResult = evaluateHand(newPlayerHand); // Évaluer la main du joueur
-    const botResult = evaluateHand(newBotHand); // Évaluer la main de l'adversaire
-    const result = getWinner(playerResult, botResult); // Obtenir le gagnant et la main
+    const playerResult = evaluateHand(newPlayerHand);
+    const botResult = evaluateHand(newBotHand);
+    const result = getWinner(playerResult, botResult);
     setWinner(result.winner);
-    setWinningHand(result.winningHand); // Stocke le nom de la main gagnante
+    setWinningHand(result.winningHand);
   };
 
   useEffect(() => {
-    dealCards(); // Distribue les cartes au chargement
+    dealCards();
   }, []);
 
   return (
     <div>
-      <h1>Poker Game</h1>
       <div className="">
         <h2>Adversaire</h2>
         <Hand cards={botHand} />
