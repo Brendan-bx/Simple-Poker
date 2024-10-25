@@ -21,6 +21,7 @@ export default function PokerGame() {
   const [botHand, setBotHand] = useState([]);
   const [winner, setWinner] = useState(null);
   const [winningHand, setWinningHand] = useState(null);
+  const [showWinner, setShowWinner] = useState(false);
 
   const dealCards = () => {
     const shuffledDeck = shuffleDeck(createDeck());
@@ -41,6 +42,10 @@ export default function PokerGame() {
     dealCards();
   }, []);
 
+  const handleShowWinner = () => {
+    setShowWinner(true);
+  };
+
   return (
     <div className="relative p-4 flex flex-col items-center z-10">
       <h2 className="text-lg font-bold mb-2 z-10">Adversaire</h2>
@@ -49,15 +54,23 @@ export default function PokerGame() {
         <h2 className="text-lg font-bold text-center flex-1">Moi</h2>
       </div>
       <Hand cards={playerHand} />
-      <div className="mt-4 text-center">
-        {winner === "Égalité" ? (
-          <h2>{winner}!</h2>
-        ) : (
-          <h2>
-            {winner} gagne avec {winningHand}!
-          </h2>
-        )}
-      </div>
+      <button
+        onClick={handleShowWinner}
+        className="mt-4 px-4 py-2 bg-green-900 text-white rounded-lg"
+      >
+        Afficher le gagnant
+      </button>
+      {showWinner && (
+        <div className="mt-4 text-center">
+          {winner === "Égalité" ? (
+            <h2>{winner}!</h2>
+          ) : (
+            <h2>
+              {winner} gagne avec {winningHand}!
+            </h2>
+          )}
+        </div>
+      )}
     </div>
   );
 

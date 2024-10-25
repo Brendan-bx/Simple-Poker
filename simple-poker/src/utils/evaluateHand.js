@@ -68,7 +68,6 @@ export function getWinner(playerResult, botResult) {
         return { winner: "Adversaire", winningHand: "Carte Forte" };
       }
 
-      // Si les cartes fortes sont identiques, c'est une égalité
       return { winner: "Égalité", winningHand: null };
     }
   }
